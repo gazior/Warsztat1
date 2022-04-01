@@ -131,7 +131,7 @@ public class TaskManager {
         }
 
         try {
-            //tasks = (String[][]) ArrayUtils.remove(tasks, numberTask);
+            tasks = (String[][]) ArrayUtils.remove(tasks, numberTask);
         } catch (IndexOutOfBoundsException e) {
             System.out.println(ConsoleColors.RED + "Incorrect argument passed");
         }
