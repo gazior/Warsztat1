@@ -28,6 +28,7 @@ public class TaskManager {
         }
 
         String arraysString = readNewFile.toString();
+        System.out.println("");
 
         tasksTemp = arraysString.split(",");
 
@@ -39,7 +40,7 @@ public class TaskManager {
 
         int rowsNumber = tasksColumnsTemp.length;
 
-        String[][] tasks = null;// new String[rowsNumber][columnsNumber];
+        String[][] tasks = new String[rowsNumber][columnsNumber];
 
         int z = 0;
 
@@ -131,7 +132,7 @@ public class TaskManager {
         }
 
         try {
-            tasks = (String[][]) ArrayUtils.remove(tasks, numberTask);
+            //tasks = (String[][]) ArrayUtils.remove(tasks, numberTask);
         } catch (IndexOutOfBoundsException e) {
             System.out.println(ConsoleColors.RED + "Incorrect argument passed");
         }
