@@ -1,6 +1,8 @@
 package taskmanager;
 
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
@@ -132,7 +134,7 @@ public class TaskManager {
         }
 
         try {
-            //tasks = (String[][]) ArrayUtils.remove(tasks, numberTask);
+            tasks = (String[][]) ArrayUtils.remove(tasks, numberTask);
         } catch (IndexOutOfBoundsException e) {
             System.out.println(ConsoleColors.RED + "Incorrect argument passed");
         }
