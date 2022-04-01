@@ -1,6 +1,5 @@
 package taskmanager;
 
-
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.File;
@@ -58,7 +57,7 @@ public class TaskManager {
 
     public static void showOption(String[][] taskTable) {
 
-        System.out.println(ConsoleColors.BLUE + "Please select an option:");
+        System.out.println(ConsoleColors.BLUE_BRIGHT + "Please select an option:");
 
         String[] options = {"add", "remove", "list", "exit"};
 
@@ -75,7 +74,7 @@ public class TaskManager {
             case "add" -> addtask(taskTable);
             case "list" -> listTask(taskTable);
             case "remove" -> removeTask(taskTable);
-            case "exit" -> System.out.println(ConsoleColors.RED + "bye bye");
+            case "exit" -> System.out.println(ConsoleColors.RED_BRIGHT + "bye bye");
             default -> System.out.println("Please select a correct option");
         }
     }
@@ -129,14 +128,14 @@ public class TaskManager {
         numberTask = removeScanner.nextInt();
 
         if (numberTask < 0) {
-            System.out.println(ConsoleColors.RED + "Incorrect argument passed. Please give number greater or equal 0");
+            System.out.println(ConsoleColors.RED_BRIGHT + "Incorrect argument passed. Please give number greater or equal 0");
             showOption(tasks);
         }
 
         try {
             tasks = (String[][]) ArrayUtils.remove(tasks, numberTask);
         } catch (IndexOutOfBoundsException e) {
-            System.out.println(ConsoleColors.RED + "Incorrect argument passed");
+            System.out.println(ConsoleColors.RED_BRIGHT + "Incorrect argument passed");
         }
 
         showOption(tasks);
