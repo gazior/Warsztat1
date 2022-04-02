@@ -4,6 +4,8 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -41,7 +43,8 @@ public class TaskManager {
 
         int rowsNumber = tasksColumnsTemp.length;
 
-        String[][] tasks = new String[rowsNumber][columnsNumber];
+
+        String[][] tasks = new String[columnsNumber][rowsNumber];
 
         int z = 0;
 
@@ -74,9 +77,16 @@ public class TaskManager {
             case "add" -> addtask(taskTable);
             case "list" -> listTask(taskTable);
             case "remove" -> removeTask(taskTable);
-            case "exit" -> System.out.println(ConsoleColors.RED_BRIGHT + "bye bye");
-            default -> System.out.println("Please select a correct option");
+            case "exit" -> {
+                saveToFile(taskTable);
+                System.out.println(ConsoleColors.RED_BRIGHT + "bye bye");
+            }
+            default -> {
+                System.out.println("Please select a correct option");
+                showOption(taskTable);
+            }
         }
+
     }
 
     public static void addtask(String[][] tasks) {
@@ -141,8 +151,20 @@ public class TaskManager {
         showOption(tasks);
     }
 
+    public static void saveToFile(String[][] tasks) {
 
-    public static void main(String[] args) {
+        try (PrintWriter printWriter = new PrintWriter("tasks.csv")) {
+            for (int i = 0; i < tasks.length; i++) {
+                //printWriter.println(Arrays.toString(tasks[i]).replace("[", "").replaceAll("]", "")+"\n");
+                printWriter.println(String.join(",",tasks[i]));
+            }
+        } catch (Exception e) {
+
+        }
+    }
+
+
+    public static void main(String[] args) throws IOException {
 
 
         String[][] taskTable = downloadData();
@@ -151,5 +173,4 @@ public class TaskManager {
 
     }
 }
-
 
