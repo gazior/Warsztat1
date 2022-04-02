@@ -43,7 +43,6 @@ public class TaskManager {
 
         int rowsNumber = tasksColumnsTemp.length;
 
-
         String[][] tasks = new String[columnsNumber][rowsNumber];
 
         int z = 0;
@@ -155,11 +154,10 @@ public class TaskManager {
 
         try (PrintWriter printWriter = new PrintWriter("tasks.csv")) {
             for (int i = 0; i < tasks.length; i++) {
-                //printWriter.println(Arrays.toString(tasks[i]).replace("[", "").replaceAll("]", "")+"\n");
                 printWriter.println(String.join(",",tasks[i]));
             }
         } catch (Exception e) {
-
+            System.out.println(ConsoleColors.RED + "Błąd w zapisie do pliku");
         }
     }
 
